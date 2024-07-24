@@ -7,7 +7,7 @@ class Photo(BaseModel):
     id: int
     name: str
     imagePath: str
-    description: str
+    description: str = 'no description'
     headers: str
     create_date: datetime.datetime
 
@@ -22,10 +22,21 @@ class Description(BaseModel):
         return v
 
 
+class Name(BaseModel):
+    content: str
+
+    @classmethod
+    def not_empty(cls, v):
+        if not v or not v.strip():
+            raise ValueError('빈 값으로 수정할 수 없습니다.')
+        return v
+
+
 class PhotoCreate(BaseModel):
     name: str
     imagePath: str
     headers: str
+    description: str = 'no description'
 
     @classmethod
     def not_empty(cls, v):
@@ -37,3 +48,8 @@ class PhotoCreate(BaseModel):
 class PhotoList(BaseModel):
     total: int
     photo_list: list[Photo] = []
+
+
+class PhotoPreview(BaseModel):
+    photo: Photo
+    image: str

@@ -1,7 +1,7 @@
-import time
-
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
+from starlette.responses import FileResponse
+from starlette.staticfiles import StaticFiles
 
 import nest_asyncio
 from pyngrok import ngrok, conf
@@ -33,13 +33,20 @@ app.add_middleware(
 )
 
 app.include_router(photo_router.router)
+app.mount("/assets", StaticFiles(directory="frontend/dist/assets"))
+
+
+@app.get("/")
+def index():
+    return FileResponse("frontend/dist/index.html")
+
 
 if __name__ == "__main__":
-    # conf.get_default().auth_token = '2jba7lixTTJ2tkjm2xdDEtUEl6n_2BYTQy2fQ2ab5NBwWzPhU'
-    # conf.get_default().region = 'jp'
-    # ngrok_tunnel = ngrok.connect(8000)
-    # tunnels = ngrok.get_tunnels()
-    # for kk in tunnels:
-    #     print(kk)
-    # nest_asyncio.apply()
+    conf.get_default().auth_token = '2jba7lixTTJ2tkjm2xdDEtUEl6n_2BYTQy2fQ2ab5NBwWzPhU'
+    conf.get_default().region = 'jp'
+    ngrok_tunnel = ngrok.connect(8000)
+    tunnels = ngrok.get_tunnels()
+    for kk in tunnels:
+        print(kk)
+    nest_asyncio.apply()
     uvicornRun("main:app", port=8000, reload=True)

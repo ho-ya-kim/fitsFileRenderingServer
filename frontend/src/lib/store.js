@@ -13,3 +13,4 @@ const persist_storage = (key, initValue) => {
 export const page = persist_storage("page", 0)
 export const keyword = persist_storage("keyword", "")
 export const limit = persist_storage("limit", 10)
+export const error = persist_storage("error", {'detail':[]})

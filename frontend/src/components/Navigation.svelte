@@ -6,7 +6,7 @@
 <!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-        <a use:link class="navbar-brand" href="/" on:click="{() => {$page = 0}}">김윤하의 개쩌는 천문학 프로젝트</a>
+        <a use:link class="navbar-brand" href="/" on:click="{() => {$page = 0}}">FITS File Server</a>
 <!--        <button-->
 <!--                class="navbar-toggler"-->
 <!--                type="button"-->
