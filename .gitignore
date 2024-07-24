@@ -3,6 +3,7 @@
 *.pyx
 *.pyc
 __pycache__
+alembic
 alembic.ini
 [test].py
 log/*

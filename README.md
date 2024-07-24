@@ -32,7 +32,7 @@ Alembic(Database) 환경 설정, revision 파일 생성
 ===
 ```commandline
 > pip install alembic
-> alembic init -t async migrations
+> alembic init -t async alembic
 > alembic revision --autogenerate -m [message]
 > alembic upgrade head
 ```

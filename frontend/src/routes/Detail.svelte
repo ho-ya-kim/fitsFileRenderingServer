@@ -90,7 +90,7 @@
         <!-- 질문 -->
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex justify-content-start">
-                <h2 id="filename" class="border-bottom py-2 me-3" contenteditable={change_name.toString()} on:keypress={(e) => edit_name(e)} style="-ms-ime-mode: auto">{name}</h2>
+                <h2 id="filename" class="border-bottom py-2 me-3" contenteditable={change_name.toString()} on:keypress={(e) => edit_name(e)} style="-ms-ime-mode: auto">{photo.name}</h2>
                 <div class="d-flex align-items-center">
                     <input type="button" value="Rename" class="btn {change_name && 'btn-dark'} {!change_name && 'btn-outline-dark'}" on:click={() => change_name = !change_name}/>
                 </div>
