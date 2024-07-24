@@ -3,8 +3,6 @@
 *.pyx
 *.pyc
 __pycache__
-alembic
 alembic.ini
 [test].py
-images/*.fits
 log/*
