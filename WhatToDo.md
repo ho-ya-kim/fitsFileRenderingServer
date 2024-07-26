@@ -1,3 +1,8 @@
+가상환경 설정
+===
+전체 작업은 가상환경에서 진행해야 한다. 가상환경을 편하게 설정하기 위해서 Jetbrain Pycharm을 이용하자.
+
+---
 Database 설정
 ===
 ## 1. Alembic 초기화
@@ -16,21 +21,21 @@ sqlalchemy.url = mysql+aiomysql://root:dlQmstjgh1!^^@127.0.0.1:3306/fits
 ...
 ```
 
-## 3. Alembic revision
+## 3. alembic/env.py 파일 수정
+```python
+# ./alembic/env.py
+# 생략...
+import models
+# 생략...
+target_metadata = models.Base.metadata
+# 생략...
+```
+
+## 4. Alembic revision
 ```commandline
 > alembic revision --autogenerate -m 1 
 ```
 `./alembic`폴더와 내부 파일을 만든다
-
-## 4. alembic/env.py 파일 수정
-```python
-# ./alembic/env.py
-...
-import models
-...
-target_metadata = models.Base.metadata
-...
-```
 
 ## 5. alembic upgrade
 ```commandline
@@ -54,7 +59,7 @@ Frontend 빌드
 ===
 ## 7. 환경변수 설정
 6번에서 local 이라면 `http://localhost:8000`을, public 이라면 터미널에 출력된 주소를 복사하고, `./frontend/.env`파일을 수정한다. 기존에 있는 `VITE_SERVER_URL=` 뒤에 붙이면 된다.
-* Local : `VITE_SERVER_URL=https://82e0-221-141-4-184.ngrok-free.app`
+* Local : `VITE_SERVER_URL=https://localhost:8000`
 * Public (다음은 한 가지 예시이다.) : `VITE_SERVER_URL=https://82e0-221-141-4-184.ngrok-free.app`
 ## 8. 빌드
 ```commandline
